@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* background-position: -300px 0; */
+@layer utilities {
+  .bg-pos-0-50 {
+    background-position: -40 80px;
+  }
+}
+
+/* background-position: -300px 0; */
+@layer utilities {
+  .bg-pos-300-0 {
+    filter: hue-rotate(800deg) invert(.4);
+    background-position: 700px 100px;
+    background-size: 600px 700px ;
+  }
+}
+
+.app {
+  width: '100%';
+  /* overflow-x: hidden; */
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  color: #011b33;
+}
+.nabartext::after {
+  position: relative;
+  content: " →";
+  font-weight: 600;
+  vertical-align: middle;
+  transform: translate(6px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  animation: horizontalPulse 2.8s ease-in 3s infinite;
+}
+.nav-bg {
+  background-color: #f1fef4f2;
+  transition: backround linear 0.3s;
+}
+.container {
+  width: 100%;
+  padding: 2rem;
+}
+
+
+.accordion-content {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.accordion-content.open {
+  max-height: 500px; /* Adjust based on your content */
+  opacity: 1;
+}
+
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+/* animatios */
+@keyframes horizontalPulse {
+  0%,
+  10% {
+    transform: translateX(6px);
+  }
+  5% {
+    transform: translateX(120%);
+  }
+}
