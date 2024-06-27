@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { FaFlagUsa } from "react-icons/fa6";
 
 interface countryTypes {
   name: string;
@@ -18,7 +19,7 @@ export const FlyoutFlag: React.FC = () => {
     { name: "Kenya", img: "https://flagicons.lipis.dev/flags/4x3/ke.svg" },
     { name: "Ghana", img: "https://flagicons.lipis.dev/flags/4x3/gh.svg" },
     { name: "Rwanda", img: "https://flagicons.lipis.dev/flags/4x3/rw.svg" },
-    { name: "Others", img: "" },
+    { name: "Others", img: "https://img.icons8.com/nolan/64/1A6DFF/C822FF/great-britain.png" },
 
   ]
 
@@ -57,6 +58,7 @@ export const FlyoutFlag: React.FC = () => {
                   </p>
                 </div>
               ))}
+              
             </div>
           </motion.div>
         )}
