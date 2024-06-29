@@ -12,21 +12,21 @@ const Partners: React.FC = () => {
   const cardData: CardData[] = [
     {
       name: "Patrick Collison",
-      img: "https://assets.paystack.com/assets/img/testimonial-authors/_400x400_crop_center-center_82_line/patrick-collison-headshot.jpg",
+      img: "https://assets.paystack.com/%20assets/img/testimonial-authors/_400x400_crop_center-center_82_line/patrick-collison-headshot.jpg",
       logo: "https://assets.paystack.com/assets/img/logos/merchants/_300x124_crop_center-center_60_line/Stripe.png",
       role: "CEO, Stripe",
       desc: "Paystack is highly technical and fanatically customer oriented. We’re excited to back such people in one of the world’s fastest-growing regions.",
     },
     {
       name: "Otto Williams",
-      img: "https://assets.paystack.com/assets/img/testimonial-authors/_200x200_crop_center-center_line/otto-williams.jpeg",
+      img: "https://assets.paystack.com/ assets/img/testimonial-authors/_200x200_crop_center-center_line/otto-williams.jpeg",
       logo: "https://assets.paystack.com/assets/img/logos/merchants/_800x255_crop_center-center_82_line/Visa-_-Color.png",
       role: "Head of Strategic Partnerships, Fintech & Ventures CEMEA, Visa",
       desc: "Our investment in Paystack aligns with the kind of investments we look for - those that will help extend our reach into the global commerce ecosystem",
     },
     {
       name: "Patrick Collison",
-      img: "https://assets.paystack.com/assets/img/testimonial-authors/_400x400_crop_center-center_82_line/michael-siebel-headshot.jpeg",
+      img: "https://assets.paystack.com/ assets/img/testimonial-authors/_400x400_crop_center-center_82_line/michael-siebel-headshot.jpeg",
       logo: "https://assets.paystack.com/assets/img/logos/merchants/_257x257_crop_center-center_line/ycombinator-logo.png",
       role: "CEO, Partner, Y Combinator",
       desc: "As YC's first Nigerian startup Paystack leads the charge of great companies coming out of Africa, powering modern payments for an entire continent.",
