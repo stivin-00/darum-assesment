@@ -1,25 +1,122 @@
+/** @jsxImportSource @emotion/react */
 import React from "react";
+import { css } from "@emotion/react";
 
 export const TryNow: React.FC = () => {
+  const containerStyle = css`
+    position: relative;
+    width: 100%;
+    padding: 2rem 1rem;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 1.5rem;
+
+    @media (min-width: 768px) {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+  `;
+
+  const backgroundStyle = css`
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: 0 50%;
+    opacity: 0.2;
+    background-image: url(https://paystack.com/assets/img/patterns/curved-pattern.png);
+  `;
+
+  const contentStyle = css`
+    width: 100%;
+    max-width: 80rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+    padding-bottom: 2rem;
+    z-index: 20;
+  `;
+
+  const rowStyle = css`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem 0;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+  `;
+
+  const textContainerStyle = css`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    @media (min-width: 768px) {
+      width: 50%;
+      align-items: flex-start;
+    }
+
+    p {
+      width: 100%;
+      text-align: center;
+      font-size: 1rem;
+
+      @media (min-width: 768px) {
+        text-align: start;
+        font-size: 1.125rem;
+      }
+    }
+
+    h1 {
+      width: 100%;
+      text-align: center;
+      font-size: 1.875rem;
+      font-weight: bold;
+
+      @media (min-width: 768px) {
+        text-align: start;
+        font-size: 2.25rem;
+      }
+    }
+  `;
+
+  const buttonStyle = css`
+    background-color: #3bb75e;
+    min-width: 200px;
+    padding: 0.75rem 1rem;
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: white;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #3f9457;
+      transform: translateY(0.25rem);
+    }
+  `;
+
   return (
-    <div className="relative w-full px-4 py-8 md:py-12 bg-[#fff] flex flex-col-reverse items-center gap-6">
-      <div
-        className="absolute inset-0 bg-cover bg-pos-0-50 opacity-20 "
-        style={{
-          backgroundImage: `url(https://paystack.com/assets/img/patterns/curved-pattern.png)`,
-        }}
-      ></div>
-      <div className="w-full max-w-7xl flex flex-col gap-8 items-start pb-8 z-20">
-        <div className="w-full flex flex-col md:flex-row md:justify-between gap-4 md:gap-6 items-center py-3">
-          <div className="w-full md:w-[50%] flex-col items-center md:items-start gap-4">
-            <p className="w-full md:text-start text-center md:text-lg">Try Paystack Now</p>
-            <h1 className="w-full text-center md:text-start text-3xl md:text-4xl font-bold">
-              Start accepting payments in just 30 minutes
-            </h1>
+    <div css={containerStyle}>
+      <div css={backgroundStyle}></div>
+      <div css={contentStyle}>
+        <div css={rowStyle}>
+          <div css={textContainerStyle}>
+            <p>Try Paystack Now</p>
+            <h1>Start accepting payments in just 30 minutes</h1>
           </div>
-          <button className="bg-[#3bb75e] md:min-w-[200px] px-4 py-3 mt-4 text-sm text-white rounded font-semibold transition-all duration-300 hover:bg-[#3f9457] hover:transform hover:translate-y-1">
-            Create a free account
-          </button>
+          <button css={buttonStyle}>Create a free account</button>
         </div>
       </div>
     </div>

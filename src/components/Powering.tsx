@@ -1,4 +1,6 @@
+/** @jsxImportSource @emotion/react */
 import React from "react";
+import { css } from '@emotion/react';
 
 interface CardData {
   img: string;
@@ -83,35 +85,101 @@ const Powering: React.FC = () => {
     },
   ];
 
+  const containerStyle = css`
+    position: relative;
+    width: 100%;
+    padding: 2rem 1rem;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 1.5rem;
+    z-index: 20;
+
+    @media (min-width: 768px) {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+  `;
+
+  const contentStyle = css`
+    width: 100%;
+    max-width: 80rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+    padding-bottom: 2rem;
+  `;
+
+  const headerStyle = css`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1rem 0;
+
+    h1 {
+      text-align: left;
+      font-size: 2.25rem;
+      font-weight: bold;
+
+      @media (min-width: 768px) {
+        width: 60%;
+        font-size: 2.5rem;
+      }
+    }
+
+    p {
+      text-align: left;
+      font-size: 1rem;
+
+      @media (min-width: 768px) {
+        width: 60%;
+        font-size: 1.125rem;
+      }
+    }
+  `;
+
+  const gridStyle = css`
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: start;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  `;
+
+  const imgStyle = css`
+    width: auto;
+    height: 20px;
+    object-fit: contain;
+  `;
+
   return (
-    <div className="relative w-full px-4 py-8 md:py-12 bg-[#fff] flex flex-col-reverse items-center gap-6 z-20">
-      <div className="w-full max-w-7xl flex flex-col gap-8 items-start pb-8">
-        <div className="w-full md:w-3/5 flex flex-col gap-4 items-start py-3">
-          <h1 className="text-left text-3xl md:text-4xl font-bold">
-            Powering growth for amazing businesses
-          </h1>
-          <p className="text-left md:text-lg">
+    <div css={containerStyle}>
+      <div css={contentStyle}>
+        <div css={headerStyle}>
+          <h1>Powering growth for amazing businesses</h1>
+          <p>
             Paystack is a growth engine for a new generation of innovative,
             forward-looking organizations operating in Africa.
           </p>
         </div>
-        <div className="w-full grid grid-cols-3 md:grid-cols-5 gap-6 md:gap-6 items-center justify-start">
+        <div css={gridStyle}>
           {cardData.map((card, index) => (
-            <div className="flex md:overflow-y-hidden items-start" key={index}>
-              <img
-                src={card.img}
-                alt={`img-${index}`}
-                className="w-auto h-[20px] object-contain"
-              />
+            <div key={index}>
+              <img src={card.img} alt={`img-${index}`} css={imgStyle} />
             </div>
           ))}
           {cardData2.map((card, index) => (
             <div className="hidden md:flex items-start col-span-1" key={index}>
-              <img
-                src={card.img}
-                alt={`img-${index}`}
-                className="w-auto h-[20px] object-contain"
-              />
+              <img src={card.img} alt={`img-${index}`} css={imgStyle} />
             </div>
           ))}
         </div>

@@ -1,6 +1,8 @@
+/** @jsxImportSource @emotion/react */
 import React from "react";
 import AccordionItem from "../common/AccordionItem";
 import { TopFooterItem } from "../common/TopFooterItem";
+import { css } from '@emotion/react';
 
 interface Link {
   name: string;
@@ -107,45 +109,113 @@ const TopFooter: React.FC = () => {
     ],
   };
 
+  const containerStyle = css`
+    position: relative;
+    width: 100%;
+    padding: 2rem 1rem;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 1.5rem;
+    z-index: 20;
+
+    @media (min-width: 768px) {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+  `;
+
+  const contentStyle = css`
+    width: 100%;
+    max-width: 80rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+    padding-bottom: 2rem;
+  `;
+
+  const accordionStyle = css`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem 0;
+
+    @media (min-width: 768px) {
+      display: none;
+    }
+  `;
+
+  const gridStyle = css`
+    width: 100%;
+    display: none;
+
+    @media (min-width: 768px) {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+    }
+  `;
+
+  const itemStyle = css`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 0;
+  `;
+
+  const linkStyle = css`
+    text-align: left;
+    font-size: 0.875rem;
+    padding-top: 0.5rem;
+
+    &:hover {
+      color: #0ba4db;
+    }
+  `;
+
   return (
-    <div className="relative w-full px-4 py-8 md:py-12 bg-[#fff] flex flex-col-reverse items-center gap-6 z-20">
-      <div className="w-full max-w-7xl flex flex-col gap-8 items-start pb-8">
-        <div className="w-full flex flex-col gap-2 items-start py-3 md:hidden">
+    <div css={containerStyle}>
+      <div css={contentStyle}>
+        <div css={accordionStyle}>
           {data.map((item) => (
-            <div className="w-full flex flex-col items-start py-3" key={item.id}>
+            <div css={itemStyle} key={item.id}>
               <AccordionItem title={item.title} links={item.links} />
             </div>
           ))}
         </div>
-        <div className="w-full hidden md:grid grid-cols-4 gap-3">
-          <div className="w-full flex flex-col items-start py-3">
+        <div css={gridStyle}>
+          <div css={itemStyle}>
             <TopFooterItem title={data[0].title} links={data[0].links} />
-            <div className="bg-white">
+            <div>
               {secondData.links.map((link, index) => (
-                <p className="text-left text-sm hover:text-[#0ba4db] pt-2" key={index}>
+                <p css={linkStyle} key={index}>
                   {link.name}
                 </p>
               ))}
             </div>
-            <div className="bg-white py-3">
+            <div>
               {thirdData.links.map((link) => (
-                <p className="text-left text-sm hover:text-[#0ba4db] pt-2" key={link.name}>
+                <p css={linkStyle} key={link.name}>
                   {link.name}
                 </p>
               ))}
             </div>
           </div>
-          <div className="w-full flex flex-col items-start py-3">
+          <div css={itemStyle}>
             <TopFooterItem title={data[1].title} links={data[1].links} />
             <TopFooterItem title={data[2].title} links={data[2].links} />
             <TopFooterItem title={data[3].title} links={data[3].links} />
           </div>
-          <div className="w-full flex flex-col items-start py-3">
+          <div css={itemStyle}>
             <TopFooterItem title={data[4].title} links={data[4].links} />
             <TopFooterItem title={data[5].title} links={data[5].links} />
             <TopFooterItem title={data[6].title} links={data[6].links} />
           </div>
-          <div className="w-full flex flex-col items-start py-3">
+          <div css={itemStyle}>
             <TopFooterItem title={data[7].title} links={data[7].links} />
           </div>
         </div>

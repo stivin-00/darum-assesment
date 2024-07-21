@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/react */
 import React, { useState } from "react";
 import {
   AiFillFacebook,
@@ -5,6 +6,7 @@ import {
   AiOutlineInstagram,
 } from "react-icons/ai";
 import { FaYoutubeSquare, FaLinkedin } from "react-icons/fa";
+import { css } from '@emotion/react';
 
 interface AddressData {
   location: string;
@@ -72,29 +74,111 @@ export const Footer: React.FC = () => {
     },
   ];
 
+  const containerStyle = css`
+    background-color: #fff;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+    width: 100%;
+    z-index: 20;
+  `;
+
+  const contentStyle = css`
+    width: 100%;
+    max-width: 80rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+    padding-bottom: 2rem;
+    @media (min-width: 768px) {
+      flex-direction: row;
+      gap: 10%;
+      justify-content: space-between;
+    }
+  `;
+
+  const contactStyle = css`
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem 0;
+  `;
+
+  const emailStyle = css`
+    color: #0ba4db;
+    padding-top: 0.5rem;
+    font-size: 0.875rem;
+    text-align: left;
+  `;
+
+  const socialIconsStyle = css`
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    .icon {
+      color: #576f7f;
+      font-size: 1.5rem;
+    }
+  `;
+
+  const addressContainerStyle = css`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    @media (min-width: 768px) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  `;
+
+  const addressStyle = css`
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1rem 0;
+  `;
+
+  const locationStyle = css`
+    font-weight: 600;
+    padding-bottom: 0.5rem;
+  `;
+
+  const phoneStyle = css`
+    color: #0ba4db;
+    padding-top: 0.5rem;
+    font-size: 0.875rem;
+    text-align: left;
+  `;
+
   return (
-    <div className="relative w-full px-4 py-8 bg-[#fff] flex flex-col items-center gap-6 z-20">
-      <div className="w-full max-w-7xl flex flex-col md:grid md:grid-cols-4 gap-8 items-start pb-8">
-        <div className="w-full flex flex-col md:col-span-1 gap-2 items-start py-3">
+    <div css={containerStyle}>
+      <div css={contentStyle}>
+        <div css={contactStyle}>
           <p className="font-semibold">Contact</p>
-          <div className="flex flex-col py-2 gap-2 items-start">
-            <p className="text-left text-sm text-[#0ba4db] pt-2">
-              hello@paystack.com
-            </p>
-            <div className="flex- flex items-center gap-2">
-              <AiFillFacebook className="text-[#576f7f] text-2xl" />
-              <AiOutlineTwitter className="text-[#576f7f] text-2xl" />
-              <AiOutlineInstagram className="text-[#576f7f] text-2xl" />
-              <FaLinkedin className="text-[#576f7f] text-2xl" />
-              <FaYoutubeSquare className="text-[#576f7f] text-2xl" />
+          <div css={contactStyle}>
+            <p css={emailStyle}>hello@paystack.com</p>
+            <div css={socialIconsStyle}>
+              <AiFillFacebook className="icon" />
+              <AiOutlineTwitter className="icon" />
+              <AiOutlineInstagram className="icon" />
+              <FaLinkedin className="icon" />
+              <FaYoutubeSquare className="icon" />
             </div>
             <div className="flex-col flex items-start">
               <p
                 onMouseOver={() => setActive(true)}
                 onMouseLeave={() => setActive(false)}
-                className={`text-left text-sm pt-2 ${
-                  active ? "text-[#0ba4db]" : ""
-                }`}
+                css={css`
+                  text-align: left;
+                  font-size: 0.875rem;
+                  padding-top: 0.5rem;
+                  ${active ? 'color: #0ba4db;' : ''}
+                `}
               >
                 hello@paystack.com
               </p>
@@ -120,22 +204,17 @@ export const Footer: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="w-full flex flex-col gap-2 md:col-span-3 md:grid-cols-3 md:grid items-start md:py-0">
+        <div css={addressContainerStyle}>
           {data.map((item, index) => (
-            <div
-              className="w-full flex flex-col gap-1 items-start py-3"
-              key={index}
-            >
-              <p className="font-semibold pb-2">{item.location}</p>
+            <div css={addressStyle} key={index}>
+              <p css={locationStyle}>{item.location}</p>
               {item.address.map((address, index) => (
                 <p className="text-left text-sm" key={index}>
                   {address}
                 </p>
               ))}
               {item.phone && (
-                <p className="text-left text-sm text-[#0ba4db] pt-2">
-                  {item.phone}
-                </p>
+                <p css={phoneStyle}>{item.phone}</p>
               )}
             </div>
           ))}
